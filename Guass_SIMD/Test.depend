@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1689466775 source:d:\software\development environment\c++ program\test\main.cpp
+	<iostream>
+	<nmmintrin.h>
+	<windows.h>
+	<stdlib.h>
+
