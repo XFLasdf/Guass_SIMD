@@ -35,10 +35,6 @@ int main()
     long long head, tail , freq ; // timers
     int step = 10;
 
-    int a;
-    cin >> a;
-
-
     QueryPerformanceFrequency((LARGE_INTEGER *)&freq );
 
     for(int n = 10; n <= 1000; n += step)
@@ -234,9 +230,9 @@ void m_gauss_simd_align(int n)
         }
         if(j != n){
             for(j = start; j+4 <= n; j+=4){
-                va = _mm_loadu_ps(&m[k][j]);
+                va = _mm_load_ps(&m[k][j]);
                 va = _mm_div_ps(va, vt);
-                _mm_storeu_ps(&m[k][j], va);
+                _mm_store_ps(&m[k][j], va);
             }
             if(j < n){
                 for(;j < n; j++){
@@ -254,11 +250,11 @@ void m_gauss_simd_align(int n)
             }
             if(j != n){
                 for(j = start; j+4 <= n; j+=4){
-                    vakj = _mm_loadu_ps(&m[k][j]);
-                    vaij = _mm_loadu_ps(&m[i][j]);
+                    vakj = _mm_load_ps(&m[k][j]);
+                    vaij = _mm_load_ps(&m[i][j]);
                     vx = _mm_mul_ps(vakj, vaik);
                     vaij = _mm_sub_ps(vaij, vx);
-                    _mm_storeu_ps(&m[i][j], vaij);
+                    _mm_store_ps(&m[i][j], vaij);
                 }
                 if(j < n){
                     for(;j < n; j++){
